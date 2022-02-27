@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: test
+---
+server:
+  port: 8201
+spring:
+  profiles: dev
+  application:
+    #项目名称，会被用来注册为eureka里的服务的名称。多个相同微服务名字需要一致，这个是负载均衡的前提
+    name: springcloud-provider-dept
+
+#Eurake的配置，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+    register-with-eureka: true #向注册中心注册自己，这个默认就是true
+---
+server:
+  port: 8202
+spring:
+  profiles: test
+  application:
+    #项目名称，会被用来注册为eureka里的服务的名称。多个相同微服务名字需要一致，这个是负载均衡的前提
+    name: springcloud-provider-dept
+
+#Eurake的配置，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+    register-with-eureka: true #向注册中心注册自己，这个默认就是true
